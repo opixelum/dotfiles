@@ -6,3 +6,6 @@ xterm*background: black
 xterm*foreground: white
 
 XTerm*.font: xft:MesloLGS\ NF:Regular:size=10
+
+Xft.dpi: 192
+
