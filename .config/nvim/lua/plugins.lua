@@ -34,6 +34,9 @@ return require("packer").startup(function(use)
         end
     }
 
+    -- COC
+    use {'neoclide/coc.nvim', branch = 'release'}
+
     -- Compile plugins when plugins.lua is saved
     vim.cmd([[
         augroup packer_user_config
