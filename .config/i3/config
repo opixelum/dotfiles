@@ -208,6 +208,3 @@ client.background       #000000
 # Remove border in default container layout
 default_border none
 
-# Run script at startup
-exec startup-script
-
