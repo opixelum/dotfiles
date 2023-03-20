@@ -1,3 +1,5 @@
+local keyset = vim.keymap.set
+
 return require("packer").startup(function(use)
     -- Packer
     use "wbthomason/packer.nvim"
@@ -36,9 +38,14 @@ return require("packer").startup(function(use)
 
     -- COC
     use {'neoclide/coc.nvim', branch = 'release'}
-    local keyset = vim.keymap.set
     local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
     keyset("i", "<TAB>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+    keyset("x", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+    keyset("n", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+    keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
+    keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
+    keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+    keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
 
     -- Markdown Preview
     use {
@@ -58,10 +65,10 @@ return require("packer").startup(function(use)
         requires = { {"nvim-lua/plenary.nvim"} }
     }
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    keyset('n', '<leader>ff', builtin.find_files, {})
+    keyset('n', '<leader>fg', builtin.live_grep, {})
+    keyset('n', '<leader>fb', builtin.buffers, {})
+    keyset('n', '<leader>fh', builtin.help_tags, {})
 
     -- Compile plugins when plugins.lua is saved
     vim.cmd([[
