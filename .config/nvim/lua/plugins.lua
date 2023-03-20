@@ -37,6 +37,12 @@ return require("packer").startup(function(use)
     -- COC
     use {'neoclide/coc.nvim', branch = 'release'}
 
+    -- Markdown Preview
+    use {
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end
+    }
+
     -- Compile plugins when plugins.lua is saved
     vim.cmd([[
         augroup packer_user_config
