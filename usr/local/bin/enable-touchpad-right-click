@@ -1,0 +1,5 @@
+#!/bin/bash
+haystack=$(cut -d "=" -f2 <<< $(xinput | grep Touchpad))
+needle=$(echo ${haystack:0:2})
+xinput set-prop "${needle}" "libinput Click Method Enabled" 0 1
+
