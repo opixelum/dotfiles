@@ -208,3 +208,9 @@ client.background       #000000
 # Remove border in default container layout
 default_border none
 
+# Enable right click for touchpad
+exec enable-touchpad-right-click
+
+# Start MEGA at startup
+exec megasync
+
