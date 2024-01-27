@@ -1,0 +1,1 @@
+/home/user/.vim/colors/blood-moon.vim
