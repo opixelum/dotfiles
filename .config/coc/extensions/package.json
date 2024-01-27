@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "coc-solidity": ">=1.4.2",
-    "coc-markdownlint": ">=1.27.0",
-    "coc-java": ">=1.14.1"
-  }
-}
