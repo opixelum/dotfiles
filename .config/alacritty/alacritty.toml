@@ -5,3 +5,6 @@ family = "MesloLGS NF"
 
 [shell]
 program = "zsh"
+
+[window]
+decorations = "None"
