@@ -142,3 +142,6 @@ source /usr/share/nvm/init-nvm.sh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export PATH=$PATH:/home/user/.local/share/bob/nvim-bin
+
+eval "$(zoxide init zsh)"
+
