@@ -15,7 +15,7 @@ return {
   {
     "okuuva/auto-save.nvim",
     opts = {
-      -- Hide message when file is auto saved
+      -- Hide auto save notifications
       execution_message = {
         enabled = false,
       },
@@ -27,25 +27,93 @@ return {
       vim.cmd("colorscheme github_dark_default")
     end,
   },
+  -- Auto completion
   {
     "hrsh7th/nvim-cmp",
-    opts = function(_, _)
+    version = false,
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+    },
+    opts = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
-      cmp.setup({
-        -- Use <TAB> to confirm completion
-        mapping = {
-          ["<TAB>"] = cmp.mapping.confirm({ select = true }),
+      local defaults = require("cmp.config.default")()
+      return {
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
         },
-        -- Disable completion for text
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
+          ["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<S-Tab>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-Tab>"] = function(fallback)
+            cmp.abort()
+            fallback()
+          end,
+        }),
         sources = cmp.config.sources({
           {
             name = "nvim_lsp",
+            -- Disable completion for text
+            entry_filter = function(entry, _)
+              return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+            end,
+          },
+          {
+            name = "path",
+            -- Disable completion for text
+            entry_filter = function(entry, _)
+              return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+            end,
+          },
+        }, {
+          {
+            name = "buffer",
+            -- Disable completion for text
             entry_filter = function(entry, _)
               return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
             end,
           },
         }),
-      })
+        formatting = {
+          format = function(_, item)
+            local icons = require("lazyvim.config").icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+            return item
+          end,
+        },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
+        sorting = defaults.sorting,
+      }
+    end,
+    ---@param opts cmp.ConfigSchema
+    config = function(_, opts)
+      for _, source in ipairs(opts.sources) do
+        source.group_index = source.group_index or 1
+      end
+      require("cmp").setup(opts)
     end,
   },
 }
