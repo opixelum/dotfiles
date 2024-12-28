@@ -1,16 +1,18 @@
 # Dotfiles
 
 Config files of my superuser OS (I use Arch btw).
-The whole content of this repository (except this `README.md`) can be copied to the home directory.
 
 ## Packages
 
 - Alacritty (Rust terminal);
 - Conda (package & environment manager);
 - Hadoop & Spark zsh config (for school);
+- JetBrains Toolbox & PyCharm
 - NVM (Node version manager);
+- Obsidian
 - Oh My Zsh (better Zsh):
 - Powerlevel10k (beautiful command line);
+- Youtube Music
 - Zoxide (smarter `cd` command).
 
 ## Wrong scaling per application
