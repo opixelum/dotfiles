@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Installing packages..."
 packages=(
+    alacritty
     brave-bin
     discord-canary
     fzf  # Zoxide auto-completion dependency
@@ -26,6 +26,9 @@ cp -r home/user/.config/waybar ~/.config/
 
 echo "Setting up Hyprland..."
 cp -r home/user/.config/hypr ~/.config/
+
+echo "Setting up Alacritty..."
+cp -r home/user/.config/alacritty ~/.config
 
 echo "Installing fonts..."
 sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
