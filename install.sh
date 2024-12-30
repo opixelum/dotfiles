@@ -6,6 +6,8 @@ packages=(
     discord-canary
     fzf  # Zoxide auto-completion dependency
     gimp
+    hypridle
+    hyprlock
     jetbrains-toolbox
     neofetch
     obsidian
