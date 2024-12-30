@@ -17,3 +17,10 @@ packages=(
 )
 
 yay -Syu --noconfirm "${packages[@]}"
+
+# Install fonts
+echo "Installing fonts..."
+sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
+fc-cache
+
+echo "Done."
