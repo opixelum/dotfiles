@@ -10,6 +10,7 @@ packages=(
     obsidian
     signal-desktop
     tree
+    unzip
     wget
     youtube-music-bin
     zoxide
