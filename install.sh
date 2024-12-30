@@ -8,10 +8,12 @@ packages=(
     gimp
     hypridle
     hyprlock
+    hyprsunset
     jetbrains-toolbox
     neofetch
     obsidian
     signal-desktop
+    swaybg
     tree
     unzip
     wget
@@ -22,6 +24,10 @@ yay -Syu --noconfirm "${packages[@]}"
 
 echo "Enforcing Wayland for all applications..."
 sudo cp -r usr/share/applications /usr/share/
+
+echo "Copying wallpapers..."
+mkdir ~/Pictures/
+cp -r home/user/Pictures/Wallpapers/ ~/Pictures/
 
 echo "Installing fonts..."
 sudo cp -r usr/share/fonts/ /usr/share/
