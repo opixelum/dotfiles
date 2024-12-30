@@ -36,6 +36,10 @@ cp home/user/.zshrc ~/
 echo "Setting up Powerlevel10k..."
 cp home/user/.p10k.zsh ~/
 
+echo "Setting up Vim..."
+cp home/user/.vimrc ~/
+cp -r home/user/.vim/ ~/
+
 echo "Installing fonts..."
 sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
 fc-cache
