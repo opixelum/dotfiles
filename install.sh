@@ -21,6 +21,10 @@ yay -Syu --noconfirm "${packages[@]}"
 echo "Enforcing Wayland for all applications..."
 sudo cp -r usr/share/applications /usr/share/
 
+echo "Installing fonts..."
+sudo cp -r usr/share/fonts/ /usr/share/
+fc-cache
+
 echo "Setting up Waybar..."
 cp -r home/user/.config/waybar ~/.config/
 
@@ -39,9 +43,5 @@ cp home/user/.p10k.zsh ~/
 echo "Setting up Vim..."
 cp home/user/.vimrc ~/
 cp -r home/user/.vim/ ~/
-
-echo "Installing fonts..."
-sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
-fc-cache
 
 echo "Done."
