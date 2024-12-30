@@ -24,6 +24,9 @@ sudo cp -r usr/share/applications /usr/share/
 echo "Setting up Waybar..."
 cp -r home/user/.config/waybar ~/.config/
 
+echo "Setting up Hyprland..."
+cp -r home/user/.config/hypr ~/.config/
+
 echo "Installing fonts..."
 sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
 fc-cache
