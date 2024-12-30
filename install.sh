@@ -18,6 +18,10 @@ packages=(
 
 yay -Syu --noconfirm "${packages[@]}"
 
+# Enforce Wayland
+echo "Enforcing Wayland for all applications..."
+sudo cp -r usr/share/applications /usr/share/
+
 # Install fonts
 echo "Installing fonts..."
 sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
