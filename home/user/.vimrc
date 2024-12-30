@@ -24,3 +24,9 @@ set expandtab
 
 " Set GitHub dark theme on
 colorscheme ghdark
+
+" Indent when pressing enter
+set autoindent
+
+" Infer indentation level
+set smartindent
