@@ -28,7 +28,10 @@ echo "Setting up Hyprland..."
 cp -r home/user/.config/hypr ~/.config/
 
 echo "Setting up Alacritty..."
-cp -r home/user/.config/alacritty ~/.config
+cp -r home/user/.config/alacritty ~/.config/
+
+echo "Setting up Zsh..."
+cp home/user/.zshrc ~/
 
 echo "Installing fonts..."
 sudo cp -r usr/share/fonts/ArgentumSans /usr/share/fonts/
