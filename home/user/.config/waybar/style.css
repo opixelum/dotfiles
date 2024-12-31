@@ -1,179 +1,120 @@
 * {
-    border: none;
-    border-radius: 0px;
-    font-family: "Argentum Sans";
-    font-weight: 500;
-    font-size: 12px;
-    min-height: 10px;
+    font-family: Argentum Sans;
+    font-weight: 600;
+    font-size: 13px;
 }
-
-@import "theme.css";
 
 window#waybar {
-    background: @bar-bg;
+    background-color: black;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 10px;
 }
 
-tooltip {
-    background: @main-bg;
-    color: @main-fg;
-    border-radius: 36px;
-    border-width: 0px;
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 10px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    background-color: #666666;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #666666;
 }
 
 #workspaces button {
-    box-shadow: none;
-	text-shadow: none;
-    padding: 0px;
-    border-radius: 36px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-right: 0px;
-    color: @main-fg;
-    animation: ws_normal 20s ease-in-out 1;
-}
-
-#workspaces button.active {
-    background: @wb-act-bg;
-    color: @wb-act-fg;
-    margin-left: 3px;
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-right: 3px;
-    animation: ws_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+    background-color: transparent;
+    color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-fg;
-    animation: ws_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    background-color: #666666;
 }
 
-#taskbar button {
-    box-shadow: none;
-	text-shadow: none;
-    padding: 0px;
-    border-radius: 36px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-right: 0px;
-    color: @wb-color;
-    animation: tb_normal 20s ease-in-out 1;
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
-#taskbar button.active {
-    background: @wb-act-bg;
-    color: @wb-act-color;
-    margin-left: 3px;
-    padding-left: 7px;
-    padding-right: 7px;
-    margin-right: 3px;
-    animation: tb_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+#workspaces button.urgent {
+    background-color: #eb4d4b;
 }
 
-#taskbar button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-color;
-    animation: tb_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
-#tray menu * {
-    min-height: 16px
-}
-
-#tray menu separator {
-    min-height: 10px
-}
-
-#backlight,
-#battery,
-#bluetooth,
-#custom-cava,
-#custom-cliphist,
 #clock,
-#custom-cpuinfo,
+#battery,
 #cpu,
-#custom-github_hyprdots,
-#custom-gpuinfo,
-#idle_inhibitor,
-#custom-keybindhint,
-#language,
 #memory,
-#mpris,
+#disk,
+#temperature,
+#backlight,
 #network,
-#custom-notifications,
-#custom-power,
-#privacy,
 #pulseaudio,
-#custom-spotify,
-#taskbar,
-#custom-theme,
+#wireplumber,
+#custom-media,
 #tray,
-#custom-updates,
-#custom-wallchange,
-#custom-wbar,
-#window,
-#workspaces,
-#custom-l_end,
-#custom-r_end,
-#custom-sl_end,
-#custom-sr_end,
-#custom-rl_end,
-#custom-rr_end {
-    color: @main-fg;
-    background: @main-bg;
-    opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 5px;
-    padding-right: 5px;
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
 }
 
-#workspaces,
-#taskbar {
-    padding: 0px;
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
 
-#custom-r_end {
-    border-radius: 0px 36px 36px 0px;
-    margin-right: 4px;
-    padding-right: 3px;
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    color: #ff0000;
 }
 
-#custom-l_end {
-    border-radius: 36px 0px 0px 36px;
-    margin-left: 4px;
-    padding-left: 3px;
+#power-profiles-daemon {
+    padding-right: 15px;
 }
 
-#custom-sr_end {
-    border-radius: 0px;
-    margin-right: 4px;
-    padding-right: 3px;
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
 }
 
-#custom-sl_end {
-    border-radius: 0px;
-    margin-left: 4px;
-    padding-left: 3px;
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
 }
 
-#custom-rr_end {
-    border-radius: 0px 36px 36px 0px;
-    margin-right: 4px;
-    padding-right: 3px;
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
 }
 
-#custom-rl_end {
-    border-radius: 36px 0px 0px 36px;
-    margin-left: 4px;
-    padding-left: 3px;
+label:focus {
+    background-color: #000000;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
 }
