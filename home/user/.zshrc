@@ -1,8 +1,7 @@
 # Oh-my-zsh installation path
-ZSH=/usr/share/oh-my-zsh/
+ZSH=~/.oh-my-zsh
 
-# Powerlevel10k theme path
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # List of plugins used
 plugins=(
@@ -21,7 +20,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
 
 # In case a command is not found, try to find the package that has it
 function command_not_found_handler {
@@ -107,7 +105,7 @@ else
   export EDITOR='mvim'
 fi
 
-export GPG_TTY=$TTY
+export GPG_TTY=$(tty)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -132,3 +130,5 @@ eval "$(zoxide init zsh)"
 
 # Created by `pipx` on 2024-05-15 12:28:17
 export PATH="$PATH:/home/user/.local/bin"
+
+eval $(ssh-agent -s) > /dev/null
