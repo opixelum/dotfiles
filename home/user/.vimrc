@@ -23,7 +23,7 @@ set tabstop=4
 set expandtab
 
 " Set GitHub dark theme on
-colorscheme ghdark
+colorscheme github-dark-high-contrast
 
 " Indent when pressing enter
 set autoindent
