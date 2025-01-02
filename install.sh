@@ -17,30 +17,30 @@ packages=(
     alacritty
     brave-bin
     discord-canary
-    dunst
-    eza
+    dunst  # Notiications manager
+    eza  # Blazing fast `ls`
     fzf  # Zoxide auto-completion dependency
-    gdm
+    gdm  # Login screen
     gimp
-    hypridle
+    hypridle  # Idle management daemon
     hyprland
-    hyprlock
-    hyprpaper
-    hyprsunset
+    hyprlock  # Lock screen
+    hyprpaper  # Wallpaper manager
+    hyprsunset  # Blue light filter
     jetbrains-toolbox
-    nautilus
+    nautilus  # File explorer
     neofetch
     obsidian
     signal-desktop
     tree
     unzip
-    uwsm
+    uwsm  # Universal Wayland Session Manager
     vim
     vlc
     wget
-    wofi
+    wofi  # Application launcher
     youtube-music-bin
-    zoxide
+    zoxide  # Blazing fast `cd`
     zsh
     zsh-completions
 )
