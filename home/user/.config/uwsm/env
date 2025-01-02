@@ -1,0 +1,7 @@
+export XCURSOR_SIZE=24
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+export ADW_DISABLE_PORTAL=1
+export GTK_THEME=Adwaita:dark
