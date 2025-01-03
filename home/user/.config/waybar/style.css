@@ -5,11 +5,11 @@
 }
 
 window#waybar {
-    background-color: black;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
-    border-radius: 10px;
 }
 
 button {
