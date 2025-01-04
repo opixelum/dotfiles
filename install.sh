@@ -28,9 +28,12 @@ packages=(
     hyprpaper  # Wallpaper manager
     hyprsunset  # Blue light filter
     jetbrains-toolbox
+    jq  # For volume control
     nautilus  # File explorer
     neofetch
     obsidian
+    pamixer  # For volume control
+    parallel  # For volume control
     signal-desktop
     tree
     unzip
