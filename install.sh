@@ -16,6 +16,7 @@ echo "Installing packages..."
 packages=(
     alacritty
     brave-bin
+    btop
     discord-canary
     dunst  # Notiications manager
     eza  # Blazing fast `ls`
