@@ -1,11 +1,6 @@
 #!/usr/bin/env sh
 
-
-#// hyde envs
-
 export confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
-export hydeConfDir="${confDir}/hyde"
-export cacheDir="$HOME/.cache/hyde"
 export thmbDir="${cacheDir}/thumbs"
 export dcolDir="${cacheDir}/dcols"
 export hashMech="sha1sum"
@@ -51,55 +46,12 @@ get_hashmap()
     fi
 }
 
-get_themes()
-{
-    unset thmSortS
-    unset thmListS
-    unset thmWallS
-    unset thmSort
-    unset thmList
-    unset thmWall
-
-    while read thmDir ; do
-        if [ ! -e "$(readlink "${thmDir}/wall.set")" ] ; then
-            get_hashmap "${thmDir}" --skipstrays || continue
-            echo "fixig link :: ${thmDir}/wall.set"
-            ln -fs "${wallList[0]}" "${thmDir}/wall.set"
-        fi
-        [ -f "${thmDir}/.sort" ] && thmSortS+=("$(head -1 "${thmDir}/.sort")") || thmSortS+=("0")
-        thmListS+=("$(basename "${thmDir}")")
-        thmWallS+=("$(readlink "${thmDir}/wall.set")")
-    done < <(find "${hydeConfDir}/themes" -mindepth 1 -maxdepth 1 -type d)
-
-    while IFS='|' read -r sort theme wall ; do
-        thmSort+=("${sort}")
-        thmList+=("${theme}")
-        thmWall+=("${wall}")
-    done < <(parallel --link echo "{1}\|{2}\|{3}" ::: "${thmSortS[@]}" ::: "${thmListS[@]}" ::: "${thmWallS[@]}" | sort -n -k 1 -k 2)
-
-    if [ "${1}" == "--verbose" ] ; then
-        echo "// Theme Control //"
-        for indx in "${!thmList[@]}" ; do
-            echo -e ":: \${thmSort[${indx}]}=\"${thmSort[indx]}\" :: \${thmList[${indx}]}=\"${thmList[indx]}\" :: \${thmWall[${indx}]}=\"${thmWall[indx]}\""
-        done
-    fi
-}
-
-[ -f "${hydeConfDir}/hyde.conf" ] && source "${hydeConfDir}/hyde.conf"
 
 case "${enableWallDcol}" in
     0|1|2|3) ;;
     *) enableWallDcol=0 ;;
 esac
 
-if [ -z "${hydeTheme}" ] || [ ! -d "${hydeConfDir}/themes/${hydeTheme}" ] ; then
-    get_themes
-    hydeTheme="${thmList[0]}"
-fi
-
-export hydeTheme
-export hydeThemeDir="${hydeConfDir}/themes/${hydeTheme}"
-export wallbashDir="${hydeConfDir}/wallbash"
 export enableWallDcol
 
 
@@ -135,19 +87,6 @@ get_aurhlpr()
     elif pkg_installed paru
     then
         aurhlpr="paru"
-    fi
-}
-
-set_conf()
-{
-    local varName="${1}"
-    local varData="${2}"
-    touch "${hydeConfDir}/hyde.conf"
-
-    if [ $(grep -c "^${varName}=" "${hydeConfDir}/hyde.conf") -eq 1 ] ; then
-        sed -i "/^${varName}=/c${varName}=\"${varData}\"" "${hydeConfDir}/hyde.conf"
-    else
-        echo "${varName}=\"${varData}\"" >> "${hydeConfDir}/hyde.conf"
     fi
 }
 
