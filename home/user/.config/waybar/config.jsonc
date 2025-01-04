@@ -42,7 +42,7 @@
     "battery": {
         "states": {
             // "good": 95,
-            "warning": 30,
+            "warning": 20,
             "critical": 10
         },
         "format": "{icon}",
@@ -66,8 +66,8 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": "{icon} {format_source}",
+        "format-muted": "",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {

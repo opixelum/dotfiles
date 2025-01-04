@@ -87,6 +87,11 @@ button:hover {
     color: #ff0000;
 }
 
+#battery.warning:not(.charging) {
+    color: #ffa500;
+}
+
+
 #power-profiles-daemon {
     padding-right: 15px;
 }
