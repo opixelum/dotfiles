@@ -20,10 +20,10 @@
     ],
     // Modules configuration
     "clock": {
-        // "timezone": "America/New_York",
+        "format": "{:%I:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-    },
+},
     "cpu": {
         "format": "CPU: {usage}%",
         "tooltip": false
@@ -34,8 +34,8 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
+        "critical-threshold": 80,
         "format": "{temperatureC}°C",
         "format-icons": ["", "", ""]
     },
