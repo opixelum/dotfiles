@@ -47,8 +47,8 @@
         },
         "format": "{icon}",
         "format-full": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "⚡",
+        "format-plugged": "⚡",
         "format-alt": "{capacity}% {icon}",
         // "format-good": "", // An empty format will hide the module
         "format-icons": ["", "", "", "", ""]
@@ -56,7 +56,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "",
         "tooltip-format": "{essid}\n{ipaddr}\nSignal strenght: {signalStrength}%",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",

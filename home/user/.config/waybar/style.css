@@ -82,6 +82,10 @@ button:hover {
     }
 }
 
+#battery, #pulseaudio, #network {
+    font-size: 15px;
+}
+
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     color: #ff0000;
