@@ -12,6 +12,12 @@ yay -Syu --devel --noconfirm
 yay -Y --devel --save --noconfirm
 yay -Fy --noconfirm
 
+echo "Configuring mirrors..."
+yay -S --needed --noconfirm reflector
+sudo cp etc/xdg/reflector/reflector.conf /etc/xdg/reflector/
+sudo systemctl start reflector.service
+sudo systemctl enable --now reflector.timer
+
 echo "Installing packages..."
 packages=(
     alacritty
@@ -48,7 +54,7 @@ packages=(
     zsh
     zsh-completions
 )
-yay -Syu --noconfirm "${packages[@]}"
+yay -Syu --needed --noconfirm "${packages[@]}"
 
 # echo "Enforcing Wayland for all applications..."
 # sudo cp -r usr/share/applications /usr/share/
