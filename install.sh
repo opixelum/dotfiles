@@ -140,13 +140,14 @@ if [ "$INSTALL_APPS" = true ]; then
         jetbrains-toolbox
         obsidian
         signal-desktop
-        youtube-music-bin
     )
     yay -Syu --needed --noconfirm "${apps_packages[@]}"
-fi
 
-# echo "Enforcing Wayland for all applications..."
-# sudo cp -r usr/share/applications /usr/share/
+    echo "Fixing scaling for Electron apps..."
+    cp home/user/.local/share/applications ~/.local/share/
+
+    # Fix scaling on JetBrains apps
+fi
 
 echo "Done. Restarting session..."
 sudo systemctl enable --now gdm.service
