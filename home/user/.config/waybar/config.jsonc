@@ -21,15 +21,17 @@
     // Modules configuration
     "clock": {
         "format": "{:%I:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
         "format-alt": "{:%Y-%m-%d}"
 },
     "cpu": {
         "format": "CPU: {usage}%",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 1
     },
     "memory": {
-        "format": "RAM: {}%"
+        "format": "RAM: {}%",
+        "interval": 1
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -37,7 +39,9 @@
         // "format-critical": "{temperatureC}°C {icon}",
         "critical-threshold": 80,
         "format": "{temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "tooltip": false,
+        "interval": 1
     },
     "battery": {
         "states": {
@@ -51,7 +55,8 @@
         "format-plugged": "⚡",
         "format-alt": "{capacity}% {icon}",
         // "format-good": "", // An empty format will hide the module
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "interval": 1
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -60,7 +65,9 @@
         "tooltip-format": "{essid}\n{ipaddr}\nSignal strenght: {signalStrength}%",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 1
+
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -79,6 +86,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "interval": 1
+
     }
 }
