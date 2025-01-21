@@ -58,6 +58,7 @@ minimal_packages=(
     btop
     eza  # Blazing fast `ls`
     fzf  # Zoxide auto-completion dependency
+    megacmd
     neofetch
     tree
     unzip
