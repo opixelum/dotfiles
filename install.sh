@@ -96,6 +96,7 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
         hyprsunset  # Blue light filter
         jq  # For volume control
         nautilus  # File explorer
+        noto-fonts-emoji
         pamixer  # For volume control
         parallel  # For volume control
         uwsm  # Universal Wayland Session Manager
