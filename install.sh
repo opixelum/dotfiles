@@ -49,7 +49,7 @@ yay -Fy --noconfirm
 
 echo "Configuring mirrors..."
 yay -S --needed --noconfirm reflector
-sudo cp etc/xdg/reflector/reflector.conf /etc/xdg/reflector/
+sudo cp etc/xdg/reflector/reflector.conf /etc/xdg/reflector
 sudo systemctl start reflector.service
 sudo systemctl enable --now reflector.timer
 
@@ -76,17 +76,18 @@ chsh -s /usr/bin/zsh
 echo "Setting up Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cp home/user/.zshrc ~/
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 echo "Setting up Vim..."
-cp home/user/.vimrc ~/
-cp -r home/user/.vim/ ~/
+cp home/user/.vimrc ~
+cp -r home/user/.vim ~
 
 if [ "$INSTALL_DESKTOP_ENV" = true ]; then
     echo "Installing desktop environment packages..."
     desktop_environment_packages=(
         alacritty
+        brightnessctl
         dunst  # Notifications manager
         gdm  # Login screen
         hypridle  # Idle management daemon
@@ -101,36 +102,44 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
         parallel  # For volume control
         uwsm  # Universal Wayland Session Manager
         vlc
+        waybar
         wofi  # Application launcher
     )
     yay -Syu --needed --noconfirm "${desktop_environment_packages[@]}"
 
-    echo "Setting up UWSM..."
-    cp -r home/user/.config/uwsm ~/.config
-
     echo "Copying wallpapers..."
-    mkdir -p ~/Pictures/
-    cp -r home/user/Pictures/Wallpapers/ ~/Pictures/
+    mkdir -p ~/Pictures
+    cp -r home/user/Pictures/Wallpapers ~/Pictures
 
     echo "Installing fonts..."
-    sudo cp -r usr/share/fonts/ /usr/share/
+    sudo cp -r usr/share/fonts /usr/share
     fc-cache
 
-    echo "Setting up Waybar..."
-    cp -r home/user/.config/waybar ~/.config/
-
-    echo "Setting up Hyprland..."
-    cp -r home/user/.config/hypr ~/.config/
-
     echo "Setting up Alacritty..."
-    cp -r home/user/.config/alacritty ~/.config/
+    cp -r home/user/.config/alacritty ~/.config
 
-    echo "Setting up Powerlevel10k..."
-    cp home/user/.p10k.zsh ~/
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    echo "Setting up Dunst..."
+    cp -r home/user/.config/dunst ~/.dunst
 
     echo "Setting up GDM..."
     sudo cp gnome-shell-theme.gresource /usr/share/gnome-shell
+
+    echo "Setting up Hyprland..."
+    cp -r home/user/.config/hypr ~/.config
+    cp -r home/user/.local/bin ~/.local
+
+    echo "Setting up Powerlevel10k..."
+    cp home/user/.p10k.zsh ~
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+
+    echo "Setting up UWSM..."
+    cp -r home/user/.config/uwsm ~/.config
+
+    echo "Setting up Waybar..."
+    cp -r home/user/.config/waybar ~/.config
+
+    echo "Setting up Wofi..."
+    cp -r home/user/.config/wofi ~/.config
 fi
 
 if [ "$INSTALL_APPS" = true ]; then
@@ -140,15 +149,17 @@ if [ "$INSTALL_APPS" = true ]; then
         discord-canary
         gimp
         jetbrains-toolbox
+        libreoffice-fresh
+        obs-studio
         obsidian
         signal-desktop
     )
     yay -Syu --needed --noconfirm "${apps_packages[@]}"
 
     echo "Fixing scaling for Electron apps..."
-    cp home/user/.local/share/applications ~/.local/share/
+    cp home/user/.local/share/applications ~/.local/share
 
-    # Fix scaling on JetBrains apps
+    # TO DO: Fix scaling on JetBrains apps
 fi
 
 echo "Done. Restarting session..."
