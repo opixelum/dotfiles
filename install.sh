@@ -89,11 +89,13 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
         alacritty
         brightnessctl
         dunst  # Notifications manager
+        evince  # PDF viewer
         gdm  # Login screen
         hypridle  # Idle management daemon
         hyprland
         hyprlock  # Lock screen
         hyprpaper  # Wallpaper manager
+        hyprshot  # Screenshot tool
         hyprsunset  # Blue light filter
         jq  # For volume control
         nautilus  # File explorer
