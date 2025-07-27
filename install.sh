@@ -153,7 +153,6 @@ if [ "$INSTALL_APPS" = true ]; then
         jetbrains-toolbox
         libreoffice-fresh
         obs-studio
-        obsidian
         signal-desktop
     )
     yay -Syu --needed --noconfirm "${apps_packages[@]}"
