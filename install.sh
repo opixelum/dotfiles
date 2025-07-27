@@ -55,6 +55,8 @@ sudo systemctl enable --now reflector.timer
 
 echo "Installing minimal packages..."
 minimal_packages=(
+    bluez
+    bluez-utils
     btop
     eza  # Blazing fast `ls`
     fzf  # Zoxide auto-completion dependency
@@ -69,6 +71,9 @@ minimal_packages=(
     zsh-completions
 )
 yay -Syu --needed --noconfirm "${minimal_packages[@]}"
+
+echo "Setting up bluetooth..."
+sudo systemctl enable --now bluetooth.service
 
 echo "Setting up Zsh..."
 chsh -s /usr/bin/zsh
@@ -147,6 +152,7 @@ fi
 if [ "$INSTALL_APPS" = true ]; then
     echo "Installing desktop applications packages..."
     apps_packages=(
+        blueman
         brave-bin
         discord-canary
         gimp
