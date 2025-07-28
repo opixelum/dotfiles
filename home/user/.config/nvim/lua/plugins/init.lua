@@ -71,16 +71,17 @@ return {
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
+  {
+    "nvim-telescope/telescope.nvim",
+    config = function()
+      require("telescope").setup({
+        pickers = {
+          find_files = {
+            find_command = { "rg", "--files", "--hidden", "--glob", "*"}
+          }
+        }
+      })
+    end
+  }
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }
