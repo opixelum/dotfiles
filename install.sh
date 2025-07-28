@@ -53,6 +53,13 @@ sudo cp etc/xdg/reflector/reflector.conf /etc/xdg/reflector
 sudo systemctl start reflector.service
 sudo systemctl enable --now reflector.timer
 
+echo "Backing up existing Neovim config if any..."
+if [ -d "~/.config/nvim" ]; then
+  mv "~/.config/nvim" "~/.config/nvim.bak"
+fi
+rm -rf ~/.local/state/nvim
+rm -rf ~/.local/share/nvim
+
 echo "Installing minimal packages..."
 minimal_packages=(
     bluez
@@ -60,8 +67,12 @@ minimal_packages=(
     btop
     eza  # Blazing fast `ls`
     fzf  # Zoxide auto-completion dependency
+    gcc
+    make
     megacmd
     neofetch
+    neovim
+    ripgrep
     tree
     unzip
     vim
