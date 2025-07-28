@@ -13,13 +13,15 @@ return {
     end,
   },
 
-{
+  -- Better Rust LSP
+  {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
     ft = "rust",
   },
 
+  -- Format Rust code on save
   {
     'rust-lang/rust.vim',
     ft = "rust",
@@ -28,6 +30,7 @@ return {
     end
   },
 
+  -- Display crates latest versions in Cargo.toml
   {
     'saecki/crates.nvim',
     ft = {"toml"},
@@ -40,11 +43,12 @@ return {
         },
       }
       require('cmp').setup.buffer({
-        sources = { { name = "crates" }}
+        sources = {{ name = "crates" }}
       })
     end
   },
 
+  -- File explorer
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
@@ -54,8 +58,15 @@ return {
         }
       })
     end
-  }
+  },
 
+  -- Auto save files when leaving insert mode
+  {
+    "okuuva/auto-save.nvim",
+    version = '*', -- see https://devhints.io/semver, alternatively use '*' to use the latest tagged release
+    cmd = "ASToggle", -- optional for lazy loading on command
+    event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+  },  
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
