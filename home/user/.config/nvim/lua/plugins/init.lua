@@ -67,6 +67,7 @@ return {
     cmd = "ASToggle", -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
   },  
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
