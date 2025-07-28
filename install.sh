@@ -107,6 +107,7 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
         noto-fonts-emoji
         pamixer  # For volume control
         parallel  # For volume control
+        ttf-jetbrains-mono-nerd
         uwsm  # Universal Wayland Session Manager
         vlc
         waybar

@@ -1,5 +1,5 @@
 [font.normal]
-family = "MesloLGS NF"
+family = "JetBrainsMono Nerd Font"
 
 [general]
 import = ["~/.config/alacritty/themes/github_dark_high_contrast.toml"]
