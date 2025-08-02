@@ -21,15 +21,6 @@ return {
     ft = "rust",
   },
 
-  -- Format Rust code on save
-  {
-    'rust-lang/rust.vim',
-    ft = "rust",
-    init = function ()
-      vim.g.rustfmt_autosave = 1
-    end
-  },
-
   -- Display crates latest versions in Cargo.toml
   {
     'saecki/crates.nvim',
