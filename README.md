@@ -5,14 +5,10 @@ Config files of my superuser OS (I use Arch btw).
 ## Packages
 
 - Alacritty (Rust terminal);
-- Conda (package & environment manager);
-- Hadoop & Spark zsh config (for school);
-- JetBrains Toolbox & PyCharm
+- JetBrains Toolbox
 - NVM (Node version manager);
-- Obsidian
 - Oh My Zsh (better Zsh):
 - Powerlevel10k (beautiful command line);
-- Youtube Music
 - Zoxide (smarter `cd` command).
 
 ## Wrong scaling per application
