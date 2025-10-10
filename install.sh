@@ -99,6 +99,11 @@ echo "Setting up Vim..."
 cp home/user/.vimrc ~
 cp -r home/user/.vim ~
 
+echo "Setting up KEEBD Corne keyboard rules..."
+sudo cp -r etc/udev /etc
+sudo udevadm control --reload
+sudo udevadm trigger
+
 if [ "$INSTALL_DESKTOP_ENV" = true ]; then
     echo "Installing desktop environment packages..."
     desktop_environment_packages=(

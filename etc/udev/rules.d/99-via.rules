@@ -1,0 +1,2 @@
+# Allow VIA/Vial access to KEEBD Corne split keyboard
+ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666", TAG+="uaccess"
