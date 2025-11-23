@@ -166,6 +166,10 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
     cp -r home/user/.config/wofi ~/.config
 fi
 
+echo "Setting up SSH agent..."
+systemctl enable --user ssh-agent.service
+systemctl start --user ssh-agent.service
+
 if [ "$INSTALL_APPS" = true ]; then
     echo "Installing desktop applications packages..."
     apps_packages=(
