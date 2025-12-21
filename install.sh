@@ -111,7 +111,6 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
         brightnessctl
         dunst  # Notifications manager
         evince  # PDF viewer
-        gdm  # Login screen
         hypridle  # Idle management daemon
         hyprland
         hyprlock  # Lock screen
@@ -145,7 +144,7 @@ if [ "$INSTALL_DESKTOP_ENV" = true ]; then
     echo "Setting up Dunst..."
     cp -r home/user/.config/dunst ~/.dunst
 
-    echo "Setting up GDM..."
+    echo "Setting up Gnome theme..."
     sudo cp gnome-shell-theme.gresource /usr/share/gnome-shell
 
     echo "Setting up Hyprland..."
@@ -173,22 +172,17 @@ systemctl start --user ssh-agent.service
 if [ "$INSTALL_APPS" = true ]; then
     echo "Installing desktop applications packages..."
     apps_packages=(
+        antigravity
         blueman
         brave-bin
         discord-canary
         gimp
-        jetbrains-toolbox
-        libreoffice-fresh
-        obs-studio
         signal-desktop
     )
     yay -Syu --needed --noconfirm "${apps_packages[@]}"
 
     echo "Fixing scaling for Electron apps..."
     cp home/user/.local/share/applications ~/.local/share
-
-    # TO DO: Fix scaling on JetBrains apps
 fi
 
-echo "Done. Restarting session..."
-sudo systemctl enable --now gdm.service
+echo "Done."

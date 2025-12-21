@@ -4,12 +4,22 @@ Config files of my superuser OS (I use Arch btw).
 
 ## Packages
 
-- Alacritty (Rust terminal);
-- JetBrains Toolbox
-- NVM (Node version manager);
-- Oh My Zsh (better Zsh):
-- Powerlevel10k (beautiful command line);
-- Zoxide (smarter `cd` command).
+- Alacritty (Rust terminal)
+- Antigravity
+- Brave
+- Btop
+- Discord Canary
+- Dunst (notification manager)
+- Evince (PDF viewer)
+- Gimp
+- Nautilus (File explorer)
+- Oh My Zsh (better Zsh)
+- Powerlevel10k (beautiful command line)
+- Signal
+- VLC
+- Waybar
+- Wofi (Application launcher)
+- Zoxide (smarter `cd` command)
 
 ## Wrong scaling per application
 
